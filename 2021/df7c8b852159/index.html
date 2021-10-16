@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/log.jpg">
+  <link rel="icon" href="/img/log.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="有东西被加密了, 请输入密码查看">
+  <meta name="author" content="Yuxuan">
+  <meta name="keywords" content="">
+  <meta name="description" content="有东西被加密了, 请输入密码查看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决WPS Pro密钥失效">
+<meta property="og:url" content="http://blog.weizh.top/2021/df7c8b852159/index.html">
+<meta property="og:site_name" content="雨轩的博客">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-01T10:09:59.000Z">
+<meta property="article:modified_time" content="2021-10-10T14:33:05.168Z">
+<meta property="article:author" content="Yuxuan">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>解决WPS Pro密钥失效 - 雨轩的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.weizh.top","root":"/","version":"1.8.12","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>雨轩的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://weizh365.gitee.io/tu_bed/">
+                <i class="iconfont icon-images"></i>
+                图床
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://meiriyiwen.com">
+                <i class="iconfont icon-book"></i>
+                每日一文
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://weizh365.gitee.io/tu_bed/images/hexo/2021/10/10221923.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="解决WPS Pro密钥失效">
+              
+                解决WPS Pro密钥失效
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-01 18:09" pubdate>
+        2021年10月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">解决WPS Pro密钥失效</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月10日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ad0e717343cb5ae1897a180b74e2b7e2921ff771c130777088be5408535807f4">a2fb9d89155466d7824eea2192a4279b733605fcb48a216cf660409c7bbed7850120cbdf235c4d8608197b969b5686d3a03ad8d69f4ac6ebb4a91afdbe6ba817a7bd637fe44eb8ddbe47f9ed699cf8db5313eb9e7e11ba8dfad88deb0e68694e83fe6b8fc8e83ee6b5a894152a31f27f1066f69aa7cd0aee6ba04efd428b20cf9e7732f808031f34e018ab47fe7c4edbc0085b9f54142556ae9f78be209b63a906863ecde6bb4cfb857759660387c8405513bde91a38688d628f184e93ade841597be8d8d9be2cc27289de6014ff4e69f9a15922d2f35790d74b147f2726804650c978265d666b9d82e0849157acf014dbf17fb5041fe93056f9d9ad9af61594610c74795991a8e7083674c08c47a0e61518a48a998ea9bd274c66eb6122cc672cecd49f2fc6a1782bb2401a45c69cb3b9526808e9113c645ffdaeee958dcd96d6075938bfae457aefd6aacce99471d8e4791b4c11c45855f7736df3a98217e663f5c53fa18647aaa14b36838559e6615114ea0e70510a487691fca34ccb105b589083fbd5a48f413d69e2f445becef358762572b46e77b4c7532c421b1baad5b3ade85fc41fb24d362b43a798b81f864bb7da58d62ee542265fb906fd573eae6ec7fd4aed282d947bf2ce59fe96b7c7bedfc9ff9e4643985dc4660bd01b5ca460249c582258bb5fa33b007f16696c0e28529357344cf5306e00c07f56f416bbcbaa77020535e1ae77920e7b7c7386a31970c21769de52a7b0681070c957a02e95e1e6da6dd0f27adee67ab0ec0a1ec444dcd3a7c7b467a15e425edae1977ed868b29c801496d101a1b9828e55d549a9eea5be3f47134233849d879fab8abe7091114b2841a5a06bf2f1687d1063b88f7113121ade3c107afa81b0edfbcf77d1164bfb203745fc98559ec19738f6632bcd70ce0cf3947f3aa5b624a324d262f9124321a3661a78d3b1f23795e492ab88499f64a806fbc336d7fefedd688a413c1e342864abac0b059194ee5db60ba99879dccc0df2a69576d7583dea97cea03d8c8f5ac2531e84da7e810407751d815038ee84fee61463cc652831d00c3f965d612debfa76aaced01edff32373b855534e1ccf114ade98cd37a670b9d5a2447067b4bbf6ba02655615efc64df65a3cb23b666aa9c7e634c82b33634211c508744755ebe0929e7f79305980a038eaed4ab93341b8f215246d527c3a7fef7a62e6f38f7c463108fd900962e34bd9f45041fb3cc45e6abd0d83c530ffe4645692ce964d0a05bd17ca26faef74e1d9a614cadcc85438f2a1ec829323616ac4183ae93b0ecd72e635ab0aa3e6c23cdb154028301d178cc280d2cb849e078f57a7c6a80198945903982e7bf6481d8a84284da28db2469b16783d95920a9afbbd4637bda94d406310cd414844c345df3f4af3f9cda27dd2ee55b0eaf2fb0146b5324b1650b3e2b7d754581527b2ff51f4f8154d39fe8b6ee2d24a8afeed685463be6014b2b404f7e002a366b97a0db16990154e135da71125ffa6c1f228071fc97a86fb3be5f89763203511848c696fbc1b5f6fb067d570c921dd58f1a4fdadf861410fa0ea8875fae8ac54597682d97d2e99d5fbb943fcb317dd61a935939d6aad68aef9baaabcde440dacb99252e5c0185838f13289e076b794daede0634d8ba1882703e75ef9f393746406ccdf849d1cd1145e4bc46022c7c48a23689d24b1ac653b42b14c7f61974b51c3e1cf66dc6565c7cab490ad10e01735088c1dfa639274c975e8e6cdbea55b3b95ad93cef649567f4874f24e109900f21730e37aa3b7a6e3ca11ca40b0bdb7b9c0a193ca98d25e97c842643496e29cf9edb46ffd04540e3d261c42ac13d29a236072ffc456da9ebe5e64447f205080b4c6675cf7a93a332b8a30ddf49f953d45de2d45570288803d557699f785e1bbcf3d04f1774b9fcb42d269eb4cecc37d1e9efff6f5da511eb8a8adc10ed8e219ec7d1d88939b0bc1d745bb34d990eac1312d461421bb5c58cf9cc3bc01e03def339a4f2d982cb70adc713adb731783434f27a1dc45706d8cd298a5b6f1e0915725b5349768dce94567fd802d0a7bd4102c99d68975d559f94342761cf9cbaaba3f57631771eb62e61667d450b5306ba5542d8d558f8d465de614f3726e66984e38f3b7b959f708347ce454b0bfb3b7465dae16576334608ab3af3b984ea1fb02cf01f1f80ef41f7a55caf454b6c727cfb626856d3edb76014e4563988f59c47815a8508244aba8e861c2df9e7d227193a3abfdf1ca5b1819968b61d6ad6707bf17afc6ab2574392f22dc11ffc98982c5c805e34f59e884a1b7196212e3541083bc19e8fdcfc3a0507c9ca1d998f8df53974d0bb0a94b9c6e86804ff1ef8a18d30ae3023044b84fc65f27ff93143d675d2c12e6cd27fdcd37dad90796653ea6ded8d3ea04dc9ba31ce573989a81e4305bd7ccf99482c1e4f074712f6a202350dd6800adc488da7f35d76f7f37f70e21caffefbd5774989efc28b4806ec319a1237c153de991dc3bb20e9c3b00375e72ddc4577377cd3379b59a5193dd48e024dd96e27fb55491f1eaf3606bb4bfb9d987eac7b92e553d0ba95274c934580c26c1c555c9cdc02ffb429566dc30a785d9b7c56df89123d9c66ee2a56bd67169f86db0a7c1e915b94de51909320a00bafa76faf90137fc87aec113a8acc50cb64aa79b4f830abd51d6737d4e2fab9d4a19f52a580e2a63ba8709a64a2f314de2f6e301ef125d081d7b53facf2225916a84f4d19acced2e5134f646cdf4e7aa9d8d5c6398c534b88dda156e9fe4581e94a8688757b0b1c29abd017e098d25bdf05173d9022736cfaa69295b8556125670eae1f2fbbb402b39342e7c04a9a2d0b5d95a6ba45bc9c90ce4856434ab62fb2061a87fe1e209b38519ab7a4d65e413f7771c529f370c88bd139ebcdb64f3be156c23a7245be358c4c11f3220ed8274cd9a646a35a26b4f1c0cc6681dc6d1ba83610319e0e34dc9598e6ed3ade21302d658d73b7bf1e35942593ce30948dc31ee7e5edce042776f1dce6e713ea1727ca455a5d1f3962f3e00b587fedc593936a62e2755a9ad3513fe720fa324062a495cf1dc738540659fbef24cc958c7ce3ef1a5985e0255a88304347f6430e2bbddf5c013062997495c513195971ee3ac993730d80454181a49352f8a12c27a980e81efcef8af12988c835fb0317dac3599720dada930fa6e9e6213a10c8dfc926371270c1615d7fa66c8b20de3176635f4cc65ade2a9f10bc5b761518ed29773371062be0672fda047a2918a6504bc1e4878e3b35bdbe5b437b6bd8a99a65c192d925f6f0a8cf795751547b1326c4daca8915219749a7bbdd331b4454ec2ac64758f3e4f113db68c2c9bf06a55e7bb3905015f6d0c410c3918c674e37600909c5cd3256964502ce8ad33d05c27b175c6cd43a3cfc6c0d6f41bd0d8aea24f24a2fb7385409a5675f60b585bc57f8b3ce07e7dba2192e25f04d2bbb00ae6a56fb923ae2d960b3a2a4123528a48cbd72f2940900ca11fa5d4763b127ea18247e8155de900a8fc192805eb9d7f742b4884448e8676a8f9d5b7d57f9cb1e2c9382ea7436b240e0331d6287afa70590456cf075647ff8cb9e18169508c1fd6b731d69d5e24bd4d959d20f046478448e02dc08a3168847e33811b4d79929b9a2c7c0e4ae6ba9ae588c1a5a3d28efad282361295fa50f71d9726d77143111aa07bd7112b3957a4bea0244a4d7c9a08f0b2010ecd7e795102d0bd46728a4b6e39af9b5568d10cc1ecbae7a55d800e6973b756d46e57f2b0493b53e933b5e8c1bd82098db80b4d9deeea50816667e3b92a16f813a0b5c2226a510666820cbf52be11f05d20810f2799d3633d26d7123733626c076602faa052a1e3092cb1bd9bb6eb4104cce9a4c6657c2240b8ff15e5b5dc8ffc9fe15f5efefe01ff9cd066342faf800cfe9cf515041964ba6206525af88d1afba54777a9db977a306dc8fc5ea65b2adedd553505dbf120267caa9eea540b9a1ee826e1e6ed2416a5a50258e6badbf077035f66262cd4c752000fe56e77c8663439c4f864bde78b953d6b1943df7fce2dee3a6617f6fbb0e10645e26d9092b814e1b7418e00969e7caa09b0cc179b6b506495ed904b3fbf2d1b4a6b5213fd34fa3c10f122a9d86b9c2dc70ad57510eb926619e97644fedeb4b23fdefc330b2ef7b7b6e82588456914384eea6acd20c5e2f830f09f204fe4f07d79430c76f6d2f15c7155548a0f94a6313cc599ec3d34f125a964120f61a0b77ddd9c262b166cefce8df9d8b5c9bbf06d13aad8f8ae6608dd89b0b10bf84c3bd404d2d1a4ffcdf778fcea0d158022bcb6408be42c932baddd3cc5fc45a9c958ee1e85ef230f308aa866ee47129da8b79312277d9d408323034c5435ef67daa11296f667d402f5078c262c65b244ba3ffdc1888ca145ebfa22be4033e4ea85d77c702e3e448d7d7ba1b80fdbf16db782a064e0eafe1104691ceeb9ab2c8df474cd5966a9e9c72f91d9f7f8c2d8939dd1bb41a0799773c04f778a8287ebb4286d392cb45922f4ad962aa3f4c1dddd7f9d4be54e6a9248</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好, 这里需要密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/48956843c1c5/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git安装教程（详解Git安装过程）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/fdd06215ee9b/">
+                        <span class="hidden-mobile">系统安装-系统安装盘制作</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"DBs0cv5ViePV1OoISixoKxaW-MdYXbMMI","appKey":"woSAJxTBB9207sKhggDsa0zt","path":"window.location.pathname","placeholder":null,"avatar":"Gravatar","meta":["nick","mail"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
